@@ -954,10 +954,12 @@ extern "C" rmw_ret_t rmw_deserialize(
    and the topic's lifetime is at least that of the readers/writers using it.  This
    reference can therefore safely be used. */
 
-static dds_entity_t create_topic (dds_entity_t pp, struct ddsi_sertopic *sertopic, struct ddsi_sertopic **stact)
+static dds_entity_t create_topic(
+  dds_entity_t pp, struct ddsi_sertopic * sertopic,
+  struct ddsi_sertopic ** stact)
 {
   dds_entity_t tp;
-#if DDS_HAS_CREATE_TOPIC_GENERIC
+#ifdef DDS_HAS_CREATE_TOPIC_GENERIC
   tp = dds_create_topic_generic(pp, &sertopic, nullptr, nullptr, nullptr);
 #else
   tp = dds_create_topic_arbitrary(pp, sertopic, nullptr, nullptr, nullptr);
@@ -965,20 +967,21 @@ static dds_entity_t create_topic (dds_entity_t pp, struct ddsi_sertopic *sertopi
   if (tp < 0) {
     ddsi_sertopic_unref(sertopic);
   } else {
-    *stact = sertopic;
+    if (stact) {
+      *stact = sertopic;
+    }
   }
   return tp;
 }
 
-static dds_entity_t create_topic (dds_entity_t pp, struct ddsi_sertopic *sertopic)
+static dds_entity_t create_topic(dds_entity_t pp, struct ddsi_sertopic * sertopic)
 {
-  struct ddsi_sertopic *stact;
-  dds_entity_t tp = create_topic (pp, sertopic, &stact);
-  if (tp > 0) {
+  dds_entity_t tp = create_topic(pp, sertopic, nullptr);
 #ifndef DDS_HAS_CREATE_TOPIC_GENERIC
+  if (tp > 0) {
     ddsi_sertopic_unref(sertopic);
-#endif
   }
+#endif
   return tp;
 }
 
@@ -1316,7 +1319,7 @@ static CddsPublisher * create_cdds_publisher(
     fqtopic_name.c_str(), type_support->typesupport_identifier,
     create_message_type_support(type_support->data, type_support->typesupport_identifier), false,
     rmw_cyclonedds_cpp::make_message_value_type(type_supports));
-  struct ddsi_sertopic *stact;
+  struct ddsi_sertopic * stact;
   topic = create_topic(node_impl->enth, sertopic, &stact);
   if (topic < 0) {
     RMW_SET_ERROR_MSG("failed to create topic");
@@ -2587,7 +2590,7 @@ static rmw_ret_t rmw_init_cs(
   pub_st = create_sertopic(
     pubtopic_name.c_str(), type_support->typesupport_identifier, pub_type_support, true,
     std::move(pub_msg_ts));
-  struct ddsi_sertopic *pub_stact;
+  struct ddsi_sertopic * pub_stact;
   pubtopic = create_topic(node_impl->enth, pub_st, &pub_stact);
   if (pubtopic < 0) {
     RMW_SET_ERROR_MSG("failed to create topic");
