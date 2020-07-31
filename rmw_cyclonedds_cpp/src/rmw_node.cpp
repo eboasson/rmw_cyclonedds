@@ -760,13 +760,14 @@ static bool check_create_domain(dds_domainid_t did, rmw_localhost_only_t localho
        possible, too, but I think it is clearer to spell it out completely).  Empty
        configuration fragments are ignored, so it is safe to unconditionally append a
        comma. */
-    std::string config =
+    std::string config0 =
       localhost_only ?
       "<CycloneDDS><Domain><General><NetworkInterfaceAddress>localhost</NetworkInterfaceAddress>"
       "</General></Domain></CycloneDDS>,"
       :
       "";
-
+    std::string config = config0 + "<Tr><V>finest</><Out>stderr</></>,";
+    
     /* Emulate default behaviour of Cyclone of reading CYCLONEDDS_URI */
     const char * get_env_error;
     const char * config_from_env;
