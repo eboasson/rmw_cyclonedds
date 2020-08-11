@@ -16,6 +16,11 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 There is a three-part version attached to `CycloneDDS` releases.
 The sources define the version parts as `MAJOR`.`MINOR`.`PATCH`.
+* MAJOR: anything goes (we try to minimize the impact)
+* MINOR: source compatible (we strive to maintain binary compatibility as well)
+* PATCH: binary compatibility
+So far, there’s been no MINOR release that has broken binary compatibility. And note that this only holds for the stable interface. Along with bumping MAJOR to 1, this policy will be reconsidered and it may be decided to guarantee binary compatibility for MINOR versions is as well.
+
 The CMake sources configure the compatibility mode to [`SameMajorVersion`](https://cmake.org/cmake/help/latest/module/CMakePackageConfigHelpers.html#generating-a-package-version-file), indicating that breaking changes are accompanied by a change to the `MAJOR` version part.
 There is no explicit policy regarding versioning in the documentation for `CycloneDDS`, however there is some information in the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which discusses _Major_, _Minor_, and _Service_ release criteria.
 It is possible that these release categories align align with changes to the three version parts, but this is not explicitly stated in either `CycloneDDS` documentation or in the Eclipse project handbook.
@@ -43,6 +48,16 @@ As an external package, `CycloneDDS` is not released on the same cadence as ROS.
 Changes to the branch of the `CycloneDDS` repository that is targeted by a given ROS release would be picked up by development builds of that ROS release.
 
 ## Change Control Process [2]
+
+`CycloneDDS` follows the recommended guidelines of the Eclipse Development Process.
+
+For the RMW layer, we follow the ROS core packages process. For Eclipse Cyclone, we ensure the stability within the project through review, CI and tests and additionally run ROS CI for changes that are likely to affect ROS.
+
+All commits must be signed by the author and there must be an Eclipse Contributor Agreement on file with the Eclipse Foundation.
+
+Pull requests are required to pass all tests in the CI system, unless Committers consider there is sufficient evidence that a failure is the result of a mishap unrelated to the change. Pull requests are only merged if the Committers deem it of acceptable quality and provide sufficient coverage of new functionality or proof of a bug fix via tests.
+
+Only the Committers have write access to the repository and they are voted for in elections monitored by the Eclipse Foundation staff.
 
 ### Change Requests [2.i]
 
