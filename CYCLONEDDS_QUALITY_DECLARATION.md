@@ -2,7 +2,7 @@ This document is a declaration of software quality for the `CycloneDDS` external
 
 # `CycloneDDS` Quality Declaration
 
-This quality declaration claims that `CycloneDDS` is in the **Quality Level 4** category.
+This quality declaration claims that `CycloneDDS` is in the **Quality Level 3** category.
 
 The `CycloneDDS` project meets a substantial number of the criteria stated for software quality.
 The developers have taken many steps to ensure that `CycloneDDS` is a software product which can be relied upon, however there is a significant lack of documentation regarding the interpretation of versions, features, and testing.
@@ -22,16 +22,15 @@ It is possible that these release categories align align with changes to the thr
 
 ### Version Stability [1.ii]
 
-The latest release of `CycloneDDS` is considered stable, but there is no documentation about whether all future releases should be considered stable.
+`CycloneDDS` is at a stable version. The current version can be found in its [package.xml](https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/package.xml), and its change history can be found in its [CHANGELOG](https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/CHANGELOG.rst).
 
 ### Public API Declaration [1.iii]
 
-The public API for `CycloneDDS` is made up of symbols defined in the header files it installs.
-In the source repository, these header files reside with each of the modules that make up `CycloneDDS`.
+All symbols in the installed headers are considered part of the public API. In the source repository, these header files reside with each of the modules that make up CycloneDDS.
 
 ### API Stability Policy [1.iv]
 
-There is no published policy for API stability in `CycloneDDS`, however there is some information in the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which states that releases which include breaking API changes are considered "Major".
+`CycloneDDS` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released. It conforms to the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which states that releases which include breaking API changes are considered "Major".
 
 ### ABI Stability Policy [1.v]
 
@@ -39,27 +38,32 @@ There is no published policy for ABI stability in `CycloneDDS`.
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
+`CycloneDDS` will not break API nor ABI within a released ROS distribution, i.e. no major releases once the ROS distribution is released. 
 As an external package, `CycloneDDS` is not released on the same cadence as ROS.
 Changes to the branch of the `CycloneDDS` repository that is targeted by a given ROS release would be picked up by development builds of that ROS release.
-There is no published policy for what criteria are required for changes that are accepted in those branches.
 
 ## Change Control Process [2]
 
 ### Change Requests [2.i]
 
-The source code repository for `CycloneDDS` is hosted in GitHub, and the change process follows a typical GitHub pull request model.
-There are several [team members](https://projects.eclipse.org/projects/iot.cyclonedds/who) with rights to merge the pull requests, and an election process exists for promoting new members of that team.
+All changes will occur through a pull request, check ROS 2 Developer Guide for additional information.
 
 ### Contributor Origin [2.ii]
 
-Perspective contributors to `CycloneDDS` must accept the terms of the [Eclipse Contributor Agreement](https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/CONTRIBUTING.md#eclipse-contributor-agreement).
-This is confirmed by a signed-off-by line in the commits put forth for review, which is enforced by a GitHub plugin which blocks completion of the pull request until all contributions contain a sign-off.
+This package uses DCO as its confirmation of contributor origin policy. More information can be found in [CONTRIBUTING](https://www.eclipse.org/legal/DCO.php).
 
 ### Peer Review Policy [2.iii]
 
-There is no published policy for peer review of `CycloneDDS` contributions, but because all changes are made through a pull request, each requires an authorized committer to be merged.
+All pull requests will be peer-reviewed, check [Eclipse Developer Process](https://www.eclipse.org/projects/dev_process/) for additional information.
 
 ### Continuous Integration [2.iv]
+
+All pull requests must pass CI on all tier 1 platforms
+Currently nightly results can be seen here:
+* [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 
 Incoming pull requests automatically trigger continuous integration testing and must run successfully to be merged.
 Automated testing runs for:
@@ -67,6 +71,9 @@ Automated testing runs for:
 - macOS Mojave with Xcode 11.1
 - macOS Sierra with Xcode 9
 - Windows Server semi-annual release with Visual Studio 2017
+
+### Documentation Policy [2.v]
+All pull requests must resolve related documentation changes before merging.
 
 ## Documentation [3]
 
@@ -100,11 +107,18 @@ In all, the test code appears to comprise approximately 25% of the codebase.
 
 ### Feature Testing [4.i]
 
+Each feature in `CycloneDDS` has corresponding tests which simulate typical usage, and they are located in the [src/core/ddsc/tests](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/core/ddsc/tests), [src/core/ddsi/tests](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/core/ddsi/tests), and other directories. New features are required to have tests before being added.
+Currently nightly results can be seen here:
+* [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 A substantial amount of the tests found throughout the source tree appear to verify functionality of various features of `CycloneDDS`.
 However the lack of a complete feature list (see section [3.i]) makes it difficult to analyze the breadth of the tests.
 
 ### Public API Testing [4.ii]
 
+Each part of the public API has tests, and new additions or changes to the public API require tests before being added. The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.
 There are some tests throughout the `CycloneDDS` source tree which specifically target the public API, but there are no policies or mechanisms to discover and measure which tests target the public API or how much of the public API is covered by the existing tests.
 
 ### Coverage [4.iii]
@@ -113,14 +127,20 @@ There is no test coverage tracking in `CycloneDDS`.
 
 ### Performance [4.iv]
 
+`CycloneDDS` performance is verifiably good and regression free per ROS Tooling WG's [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ).
 Though the `CycloneDDS` [documentation](https://github.com/eclipse-cyclonedds/cyclonedds#performance) discusses the product's performance and discusses what metrics describe it, very few tests seem to validate the given statistics or ensure that the performance does not regress.
 One of the [example projects](https://github.com/eclipse-cyclonedds/cyclonedds/blob/15e68152c9d14105e87ab1afc7e5af9c9589f776/examples/throughput/readme.rst) can be used to measure the throughput of the product, but does not provide a mechanism for analyzing resource usage or latency.
 
 ### Linters and Static Analysis [4.v]
-
+`CycloneDDS` uses and passes all the ROS2 standard linters and static analysis tools for a C++ package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters-and-static-analysis). Passing implies there are no linter/static errors when testing against CI of supported platforms.
+Currently nightly results can be seen here:
+* [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
+`CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). `CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. For comparison the average defect density of open source software projects of similar size is 0.5.
 There is no explicit documentation about the use of sanitizers in `CycloneDDS`, but it appears that the `USE_SANITIZER` build option can be used to enable address and thread sanitizers.
 In continuous integration, ASAN is enabled for some of the test matrix.
-
 There do not appear to be any linters enabled for the `CycloneDDS` repository.
 
 ## Dependencies [5]
@@ -140,11 +160,16 @@ If `CycloneDDS` is built without security enabled, the product has no apparent r
 
 ## Platform Support [6]
 
-The `CycloneDDS` [repository documentation](https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/README.md#building-eclipse-cyclone-dds) states that Linux, Mac and Windows 10 are supported.
-Platform version requirements are not explicitly stated, nor are all of the minimum build tool versions.
+`CycloneDDS` supports all of the tier 1 platforms as described in REP-2000, and tests each change against all of them.
+
+Currently nightly results can be seen here:
+* [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
+* [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 
 ## Security [7]
 
 ### Vulnerability Disclosure Policy [7.i]
 
-The Eclipse Project Handbook states the project's [vulnerability disclosure policy](https://www.eclipse.org/projects/handbook/#vulnerability-disclosure) in detail.
+This package conforms to the Vulnerability Disclosure Policy in REP-2006. The Eclipse Project Handbook states the project's vulnerability disclosure policy in detail.The Eclipse Project Handbook states the project's [vulnerability disclosure policy](https://www.eclipse.org/projects/handbook/#vulnerability-disclosure) in detail.
