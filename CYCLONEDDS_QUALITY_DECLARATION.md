@@ -95,6 +95,7 @@ All pull requests must resolve related documentation changes before merging.
 ### Feature Documentation [3.i]
 
 [Project documentation](https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/docs/dev/modules.md#feature-discovery) states that the features available in the product are "largely dynamic" based on compile-time discovery.
+`CycloneDDS` documentation covers all of the stable interface, and PRs that add to it need to include documentation. 
 An explicit list of those features, and what criteria is required for discovery, is unavailable.
 
 ### Public API Documentation [3.ii]
@@ -122,7 +123,7 @@ In all, the test code appears to comprise approximately 25% of the codebase.
 
 ### Feature Testing [4.i]
 
-Each feature in `CycloneDDS` has corresponding tests which simulate typical usage, and they are located in the [src/core/ddsc/tests](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/core/ddsc/tests), [src/core/ddsi/tests](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/core/ddsi/tests), and other directories. New features are required to have tests before being added.
+Each feature in `CycloneDDS` has corresponding tests which simulate typical usage, and they are located in separate directories next to the sources. New features are required to have tests before being added.
 Currently nightly results can be seen here:
 * [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
@@ -138,7 +139,8 @@ There are some tests throughout the `CycloneDDS` source tree which specifically 
 
 ### Coverage [4.iii]
 
-There is no test coverage tracking in `CycloneDDS`.
+There is no test coverage tracking in `CycloneDDS`. Automated coverage runs are being added to the CI to show coverage.
+
 
 ### Performance [4.iv]
 
@@ -154,8 +156,7 @@ Currently nightly results can be seen here:
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 `CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). `CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. For comparison the average defect density of open source software projects of similar size is 0.5.
-There is no explicit documentation about the use of sanitizers in `CycloneDDS`, but it appears that the `USE_SANITIZER` build option can be used to enable address and thread sanitizers.
-In continuous integration, ASAN is enabled for some of the test matrix.
+In continuous integration, ASAN is enabled for some of the test matrix. The CI run includes address sanitizer runs, ergo, no PRs can be accepted that are not clean with respect to the address sanitizer.
 There do not appear to be any linters enabled for the `CycloneDDS` repository.
 
 ## Dependencies [5]
