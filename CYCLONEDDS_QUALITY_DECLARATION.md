@@ -49,8 +49,7 @@ All symbols in the installed headers are considered part of the public API. In t
 As an external package, `CycloneDDS` is not released on the same cadence as ROS.
 Changes to the branch of the `CycloneDDS` repository that is targeted by a given ROS release would be picked up by development builds of that ROS release.
 
-## Change Control 
-[2]
+## Change Control [2]
 
 `CycloneDDS` follows the recommended guidelines of the [Eclipse Development Process](https://www.eclipse.org/projects/dev_process/).
 
