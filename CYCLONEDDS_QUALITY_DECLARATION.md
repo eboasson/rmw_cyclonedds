@@ -17,7 +17,7 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 `CycloneDDS` versioning follows the standard semantic versioning except that major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [Eclipse Foundation](https://eclipse.org)
 
 * MAJOR version when you make incompatible API changes.
-* MINOR version when you add functionality in a backwards compatible manner. MINOR IS source compatible (we strive to maintain binary compatibility as well).
+* MINOR version when you add functionality in a backwards compatible manner. MINOR is source compatible (we strive to maintain binary compatibility as well).
 * PATCH version when you make backwards compatible bug fixes. PATCH is binary compatible.
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
