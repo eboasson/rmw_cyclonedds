@@ -39,7 +39,7 @@ All symbols in the installed headers are considered part of the public API. In t
 
 ### ABI Stability Policy [1.v]
 
-There is no published policy for ABI stability in `CycloneDDS`.
+`CycloneDDS` provides ABI stability for PATCH release. `CycloneDDS` strives to provide ABI stability for MINOR release. `CycloneDDS` not guarantee ABI stability for MAJOR release.
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
@@ -129,6 +129,7 @@ Currently nightly results can be seen here:
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
+
 A substantial amount of the tests found throughout the source tree appear to verify functionality of various features of `CycloneDDS`.
 However the lack of a complete feature list (see section [3.i]) makes it difficult to analyze the breadth of the tests.
 
@@ -155,6 +156,7 @@ Currently nightly results can be seen here:
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
+
 `CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). `CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. For comparison the average defect density of open source software projects of similar size is 0.5.
 In continuous integration, ASAN is enabled for some of the test matrix. The CI run includes address sanitizer runs, ergo, no PRs can be accepted that are not clean with respect to the address sanitizer.
 There do not appear to be any linters enabled for the `CycloneDDS` repository.
