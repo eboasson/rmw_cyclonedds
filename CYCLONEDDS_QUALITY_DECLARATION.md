@@ -14,7 +14,7 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Scheme [1.i]
 
-`CycloneDDS` versioning follows the standard semantic versioning except that major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [Eclipse Foundation](https://eclipse.org)
+`CycloneDDS` versioning follows the standard semantic versioning except that major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [The Eclipse Foundation](https://eclipse.org)
 
 * MAJOR version when you make incompatible API changes.
 * MINOR version when you add functionality in a backwards compatible manner. MINOR is source compatible (we strive to maintain binary compatibility as well).
@@ -54,9 +54,9 @@ Changes to the branch of the `CycloneDDS` repository that is targeted by a given
 
 `CycloneDDS` follows the recommended guidelines of the [Eclipse Development Process](https://www.eclipse.org/projects/dev_process/).
 
-For the RMW layer, we follow the ROS core packages process. For Eclipse Cyclone, we ensure the stability within the project through review, CI and tests and additionally run ROS CI for changes that are likely to affect ROS.
+For the RMW layer, we follow the ROS core packages process. For Eclipse Cyclone DDS, we ensure the stability within the project through review, CI and tests and additionally run ROS CI for changes that are likely to affect ROS.
 
-All commits must be signed by the author and there must be an Eclipse Contributor Agreement on file with the Eclipse Foundation.
+All commits must be signed by the author and there must be an [Eclipse Contributor Agreement](https://www.eclipse.org/legal/ECA.php) on file with the Eclipse Foundation.
 
 Pull requests are required to pass all tests in the CI system, unless Committers consider there is sufficient evidence that a failure is the result of a mishap unrelated to the change. Pull requests are only merged if the Committers deem it of acceptable quality and provide sufficient coverage of new functionality or proof of a bug fix via tests.
 
