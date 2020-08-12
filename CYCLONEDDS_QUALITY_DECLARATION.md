@@ -14,12 +14,15 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Scheme [1.i]
 
-There is a three-part version attached to `CycloneDDS` releases.
-The sources define the version parts as `MAJOR`.`MINOR`.`PATCH`.
-* MAJOR: anything goes (we try to minimize the impact)
-* MINOR: source compatible (we strive to maintain binary compatibility as well)
-* PATCH: binary compatibility
-So far, there’s been no MINOR release that has broken binary compatibility. And note that this only holds for the stable interface. Along with bumping MAJOR to 1, this policy will be reconsidered and it may be decided to guarantee binary compatibility for MINOR versions is as well.
+`CycloneDDS` versioning follows the standard semantic versioning except that major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [Eclipse Foundation](https://eclipse.org)
+
+* MAJOR version when you make incompatible API changes.
+* MINOR version when you add functionality in a backwards compatible manner. MINOR IS source compatible (we strive to maintain binary compatibility as well).
+* PATCH version when you make backwards compatible bug fixes. PATCH is binary compatible.
+
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+This is what has been the case and we see no reason not to follow this going forward.
+Thus far, there’s been no MINOR release that has broken binary compatibility. And note that this only holds for the stable interface. Along with bumping MAJOR to 1, this policy will be reconsidered and it may be decided to guarantee binary compatibility for MINOR versions is as well.
 
 The CMake sources configure the compatibility mode to [`SameMajorVersion`](https://cmake.org/cmake/help/latest/module/CMakePackageConfigHelpers.html#generating-a-package-version-file), indicating that breaking changes are accompanied by a change to the `MAJOR` version part.
 There is no explicit policy regarding versioning in the documentation for `CycloneDDS`, however there is some information in the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which discusses _Major_, _Minor_, and _Service_ release criteria.
