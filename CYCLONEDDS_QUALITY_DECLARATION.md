@@ -14,17 +14,16 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Scheme [1.i]
 
-`CycloneDDS` versioning follows the standard semantic versioning except that major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [The Eclipse Foundation](https://eclipse.org)
+`CycloneDDS` versioning follows the following rules:
 
-* MAJOR version when you make incompatible API changes.
-* MINOR version when you add functionality in a backwards compatible manner. MINOR is source compatible (we strive to maintain binary compatibility as well).
-* PATCH version when you make backwards compatible bug fixes. PATCH is binary compatible.
+* MAJOR version shall be incremented when an incompatible API change is made
+* MINOR version when functionality is added in a backwards compatible manner. MINOR is source compatible (we strive to maintain binary compatibility as well).
+* PATCH version when backwards compatible bug fixes are made. PATCH is binary compatible.
+
+Major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [The Eclipse Foundation](https://eclipse.org)
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-This is what has been the case and we see no reason not to follow this going forward.
-Thus far, there’s been no MINOR release that has broken binary compatibility. And note that this only holds for the stable interface. Along with bumping MAJOR to 1, this policy will be reconsidered and it may be decided to guarantee binary compatibility for MINOR versions is as well.
 
-The CMake sources configure the compatibility mode to [`SameMajorVersion`](https://cmake.org/cmake/help/latest/module/CMakePackageConfigHelpers.html#generating-a-package-version-file), shows that breaking changes are accompanied by a change to the `MAJOR` version part.
 Here is information in the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which discusses _Major_, _Minor_, and _Service_ release criteria.
 
 ### Version Stability [1.ii]
@@ -33,11 +32,11 @@ Here is information in the [Releases section](https://www.eclipse.org/projects/h
 
 ### Public API Declaration [1.iii]
 
-All symbols in the installed headers are considered part of the public API. In the source repository, these header files reside with each of the modules that make up CycloneDDS.
+Symbols starting with dds_ or DDS_ and that are accessible after including only the top-level "dds.h" file, unless explicitly stated otherwise in a documentation comment are considered part of the stable API. In the source repository, these header files reside with each of the modules that make up CycloneDDS.
 
 ### API Stability Policy [1.iv]
 
-`CycloneDDS` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released. It conforms to the [Releases section](https://www.eclipse.org/projects/handbook/#release) of the Eclipse project handbook which states that releases which include breaking API changes are considered "Major".
+`CycloneDDS` provides API stability for PATCH release. `CycloneDDS` strives to provide API stability for MINOR release. `CycloneDDS` not guarantee API stability for MAJOR release.
 
 ### ABI Stability Policy [1.v]
 
@@ -45,9 +44,7 @@ All symbols in the installed headers are considered part of the public API. In t
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
-`CycloneDDS` will not break API nor ABI within a released ROS distribution, i.e. no major releases once the ROS distribution is released. 
-As an external package, `CycloneDDS` is not released on the same cadence as ROS.
-Changes to the branch of the `CycloneDDS` repository that is targeted by a given ROS release would be picked up by development builds of that ROS release.
+A ROS 2 release is pinned to a `CycloneDDS` release, e.g., 0.6.x or 0.7.x. The "x" here stands for patch releases and those are binary compatible. This does not preclude releasing 0.8.0 or 1.0.0.
 
 ## Change Control [2]
 
@@ -137,7 +134,7 @@ However the lack of a complete feature list (see section [3.i]) makes it difficu
 
 ### Public API Testing [4.ii]
 
-Each part of the public API has tests, and new additions or changes to the public API require tests before being added. The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.
+Each part of the public API has tests, and new additions or changes to the public API require tests before being added. The tests aim to cover both typical usage and corner cases.
 There are some tests throughout the `CycloneDDS` source tree which specifically target the public API, but there are no policies or mechanisms to discover and measure which tests target the public API or how much of the public API is covered by the existing tests.
 
 ### Coverage [4.iii]
@@ -148,11 +145,11 @@ There is no test coverage tracking in `CycloneDDS`. Automated coverage runs are 
 ### Performance [4.iv]
 
 `CycloneDDS` performance is verifiably good and regression free per ROS Tooling WG's [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ).
-Though the `CycloneDDS` [documentation](https://github.com/eclipse-cyclonedds/cyclonedds#performance) discusses the product's performance and discusses what metrics describe it, very few tests seem to validate the given statistics or ensure that the performance does not regress.
+`CycloneDDS` [documentation](https://github.com/eclipse-cyclonedds/cyclonedds#performance) discusses the product's performance and discusses what metrics describe it, very few tests seem to validate the given statistics or ensure that the performance does not regress.
 One of the [example projects](https://github.com/eclipse-cyclonedds/cyclonedds/blob/15e68152c9d14105e87ab1afc7e5af9c9589f776/examples/throughput/readme.rst) can be used to measure the throughput of the product, but does not provide a mechanism for analyzing resource usage or latency.
 
 ### Linters and Static Analysis [4.v]
-`CycloneDDS` uses and passes all the ROS2 standard linters and static analysis tools for a C++ package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters-and-static-analysis). Passing implies there are no linter/static errors when testing against CI of supported platforms.
+`rmw_cyclonedds` uses and passes all the ROS2 standard linters and static analysis tools for a C++ package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters-and-static-analysis). Passing implies there are no linter/static errors when testing against CI of supported platforms.
 Currently nightly results can be seen here:
 * [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
@@ -187,6 +184,10 @@ Currently nightly results can be seen here:
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
+
+Basically, the minimum versions are not known exactly. For Linux and macOS, ancient versions will still work. For evidence, the fact that `CycloneDDS` builds and runs on [Solaris 2.6 on SPARCv8](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/ports/solaris2.6) (given pre-generated header files and IDL output) is a fair indication.
+
+CMake 3.7, Java 1.8 and Maven 3.5 are new enough.
 
 ## Security [7]
 
