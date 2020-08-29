@@ -152,12 +152,11 @@ New changes are required to include tests coverage.
 ### Performance [4.iv]
 
 While there are no automated, public tests or results (more due Open Robotics lacking reliable ros2 CI infrastructure than to policy), there is evidence in PRs that performance does get taken into account (see, e.g., eclipse-cyclonedds/cyclonedds#558). 
-Finally, `ddsperf` is used to check for performance regressions regularly and before releases. 
+Finally, `ddsperf` is used to check for performance regressions regularly and before releases.
+PRs are tested for regressions using ddsperf before changes are accepted.
 [ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
 
 ros2 [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ) exist but is not reliable infrastructure. We suggest Open Robotics move all performance testing to dedicated hardware.
-
-One of the [example projects](https://github.com/eclipse-cyclonedds/cyclonedds/blob/15e68152c9d14105e87ab1afc7e5af9c9589f776/examples/throughput/readme.rst) can be used to measure the throughput of the product, but does not provide a mechanism for analyzing resource usage or latency.
 
 ### Linters and Static Analysis [4.v]
 `rmw_cyclonedds` uses and passes all the ROS2 standard linters and static analysis tools for a C++ package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters-and-static-analysis). Passing implies there are no linter/static errors when testing against CI of supported platforms.
