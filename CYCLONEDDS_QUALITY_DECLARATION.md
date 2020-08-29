@@ -200,4 +200,4 @@ CMake 3.7, Java 1.8 and Maven 3.5 are new enough.
 
 ### Vulnerability Disclosure Policy [7.i]
 
-This package conforms to the Vulnerability Disclosure Policy in REP-2006. The Eclipse Project Handbook states the project's vulnerability disclosure policy in detail.The Eclipse Project Handbook states the project's [vulnerability disclosure policy](https://www.eclipse.org/projects/handbook/#vulnerability-disclosure) in detail.
+This package conforms to the Vulnerability Disclosure Policy in REP-2006. The Eclipse Project Handbook states the project's vulnerability disclosure policy in detail. The Eclipse Project Handbook states the project's [vulnerability disclosure policy](https://www.eclipse.org/projects/handbook/#vulnerability-disclosure) in detail.
