@@ -31,7 +31,8 @@ Here is information in the [Releases section](https://www.eclipse.org/projects/h
 
 ### Public API Declaration [1.iii]
 
-Symbols starting with dds_ or DDS_ and that are accessible after including only the top-level "dds.h" file, unless explicitly stated otherwise in a documentation comment are considered part of the stable API. In the source repository, these header files reside with each of the modules that make up CycloneDDS.
+Symbols starting with dds_ or DDS_ and that are accessible after including only the top-level "dds.h" file, unless explicitly stated otherwise in a documentation comment are considered part of the stable API. 
+In the source repository, these header files reside with each of the modules that make up CycloneDDS.
 
 ### API Stability Policy [1.iv]
 
@@ -43,17 +44,20 @@ Symbols starting with dds_ or DDS_ and that are accessible after including only 
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
-A ROS 2 release is pinned to a `CycloneDDS` release, e.g., 0.6.x or 0.7.x. The "x" here stands for patch releases and those are binary compatible. This does not preclude releasing 0.8.0 or 1.0.0.
+A ROS 2 release is pinned to a `CycloneDDS` release, e.g., 0.6.x or 0.7.x. 
+The "x" here stands for patch releases and those are binary compatible. This does not preclude releasing 0.8.0 or 1.0.0.
 
 ## Change Control [2]
 
 `CycloneDDS` follows the recommended guidelines of the [Eclipse Development Process](https://www.eclipse.org/projects/dev_process/).
 
-For the RMW layer, we follow the ROS core packages process. For Eclipse Cyclone DDS, we ensure the stability within the project through review, CI and tests and additionally run ROS CI for changes that are likely to affect ROS.
+For the RMW layer, we follow the ROS core packages process. 
+For Eclipse Cyclone DDS, we ensure the stability within the project through review, CI and tests and additionally run ROS CI for changes that are likely to affect ROS.
 
 All commits must be signed by the author and there must be an [Eclipse Contributor Agreement](https://www.eclipse.org/legal/ECA.php) on file with the Eclipse Foundation.
 
-Pull requests are required to pass all tests in the CI system, unless Committers consider there is sufficient evidence that a failure is the result of a mishap unrelated to the change. Pull requests are only merged if the Committers deem it of acceptable quality and provide sufficient coverage of new functionality or proof of a bug fix via tests.
+Pull requests are required to pass all tests in the CI system, unless Committers consider there is sufficient evidence that a failure is the result of a mishap unrelated to the change. 
+Pull requests are only merged if the Committers deem it of acceptable quality and provide sufficient coverage of new functionality or proof of a bug fix via tests.
 
 Only the Committers have write access to the repository and they are voted for in elections monitored by the Eclipse Foundation staff.
 
@@ -63,7 +67,8 @@ All changes will occur through a pull request, check ROS 2 Developer Guide for a
 
 ### Contributor Origin [2.ii]
 
-This package uses DCO as its confirmation of contributor origin policy. More information can be found in [CONTRIBUTING](https://www.eclipse.org/legal/DCO.php).
+This package uses DCO as its confirmation of contributor origin policy. 
+More information can be found in [CONTRIBUTING](https://www.eclipse.org/legal/DCO.php).
 
 ### Peer Review Policy [2.iii]
 
@@ -121,7 +126,8 @@ In all, the test code appears to comprise approximately 25% of the codebase.
 
 ### Feature Testing [4.i]
 
-Each feature in `CycloneDDS` has corresponding tests which simulate typical usage, and they are located in separate directories next to the sources. New features are required to have tests before being added.
+Each feature in `CycloneDDS` has corresponding tests which simulate typical usage, and they are located in separate directories next to the sources. 
+New features are required to have tests before being added.
 Currently nightly results can be seen here:
 * [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
@@ -133,7 +139,8 @@ However the lack of a complete feature list (see section [3.i]) makes it difficu
 
 ### Public API Testing [4.ii]
 
-Each part of the public API has tests, and new additions or changes to the public API require tests before being added. The tests aim to cover both typical usage and corner cases.
+Each part of the public API has tests, and new additions or changes to the public API require tests before being added. 
+The tests aim to cover both typical usage and corner cases.
 There are some tests throughout the `CycloneDDS` source tree which specifically target the public API, but there are no policies or mechanisms to discover and measure which tests target the public API or how much of the public API is covered by the existing tests.
 
 ### Coverage [4.iii]
@@ -143,7 +150,9 @@ There is no test coverage tracking in `CycloneDDS`. Automated coverage runs are 
 
 ### Performance [4.iv]
 
-While there are no automated, public tests or results (more due Open Robotics lacking reliable ros2 CI infrastructure than to policy), there is evidence in PRs that performance does get taken into account (see, e.g., eclipse-cyclonedds/cyclonedds#558). Finally, `ddsperf` is used to check for performance regressions regularly and before releases. [ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
+While there are no automated, public tests or results (more due Open Robotics lacking reliable ros2 CI infrastructure than to policy), there is evidence in PRs that performance does get taken into account (see, e.g., eclipse-cyclonedds/cyclonedds#558). 
+Finally, `ddsperf` is used to check for performance regressions regularly and before releases. 
+[ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
 
 ros2 [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ) exist but is not reliable infrastructure. We suggest moving performance testing onto dedicated hardware.
 
@@ -159,14 +168,16 @@ Currently nightly results can be seen here:
 
 `CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). 
 
-`CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. Omitting Java idlc not used by ROS 2 gives 0.032 per 1,000 lines of code.
+`CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. 
+Omitting the Java idlc which is **not** used by ROS 2 gives 0.032 per 1,000 lines of code.
 
 `cyclonedds-cxx` OMG DDS C++ API automated daily static code analysis shows defect density of 0.0 per 1,000 lines of code as of Aug 29th 2020 as you can see [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds-cxx)
 
 `rmw_cyclonedds` automated daily static code analysis is being setup, results will be [here]
 
 For comparison the average defect density of open source software projects of similar size is 0.5 per 1,000 lines of code.
-In continuous integration, ASAN is enabled for some of the test matrix. The CI run includes address sanitizer runs, ergo, no PRs can be accepted that are not clean with respect to the address sanitizer.
+In continuous integration, ASAN is enabled for some of the test matrix. 
+The CI run includes address sanitizer runs, ergo, no PRs can be accepted that are not clean with respect to the address sanitizer.
 There do not appear to be any linters enabled for the `CycloneDDS` repository.
 
 ## Dependencies [5]
@@ -194,7 +205,8 @@ Currently nightly results can be seen here:
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 
-Basically, the minimum versions are not known exactly. For Linux and macOS, ancient versions will still work. For evidence, the fact that `CycloneDDS` builds and runs on [Solaris 2.6 on SPARCv8](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/ports/solaris2.6) (given pre-generated header files and IDL output) is a fair indication.
+Basically, the minimum versions are not known exactly. For Linux and macOS, ancient versions will still work. 
+For evidence, the fact that `CycloneDDS` builds and runs on [Solaris 2.6 on SPARCv8](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/ports/solaris2.6) (given pre-generated header files and IDL output) is a fair indication.
 
 CMake 3.7, Java 1.8 and Maven 3.5 are new enough.
 
