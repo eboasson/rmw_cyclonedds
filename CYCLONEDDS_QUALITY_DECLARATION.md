@@ -145,7 +145,7 @@ There are some tests throughout the `CycloneDDS` source tree which specifically 
 
 ### Coverage [4.iii]
 
-There is no test coverage tracking in `CycloneDDS`. Automated coverage runs are being added to the CI to show coverage.
+`CycloneDDS` has automated [Codecov](https://codecov.io) test coverage which can be seen [here](https://codecov.io/github/eclipse-cyclonedds/cyclonedds?branch=master).
 
 
 ### Performance [4.iv]
