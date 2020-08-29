@@ -156,7 +156,15 @@ Currently nightly results can be seen here:
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 
-`CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). `CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. For comparison the average defect density of open source software projects of similar size is 0.5.
+`CycloneDDS` has automated daily [Synopsys Coverity static code analysis](https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html) with public results that can be seen [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds). 
+
+`CycloneDDS` defect density is 0.05 per 1,000 lines of code as of Aug 11th 2020. Omitting Java idlc not used by ROS 2 gives 0.032 per 1,000 lines of code.
+
+`cyclonedds-cxx` OMG DDS C++ API automated daily static code analysis shows defect density of 0.0 per 1,000 lines of code as of Aug 29th 2020 as you can see [here](https://scan.coverity.com/projects/eclipse-cyclonedds-cyclonedds-cxx)
+
+`rmw_cyclonedds` automated daily static code analysis is being setup, results will be [here]
+
+For comparison the average defect density of open source software projects of similar size is 0.5 per 1,000 lines of code.
 In continuous integration, ASAN is enabled for some of the test matrix. The CI run includes address sanitizer runs, ergo, no PRs can be accepted that are not clean with respect to the address sanitizer.
 There do not appear to be any linters enabled for the `CycloneDDS` repository.
 
