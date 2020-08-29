@@ -143,8 +143,10 @@ There is no test coverage tracking in `CycloneDDS`. Automated coverage runs are 
 
 ### Performance [4.iv]
 
-`CycloneDDS` performance is verifiably good and regression free per ROS Tooling WG's [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ).
-`CycloneDDS` [documentation](https://github.com/eclipse-cyclonedds/cyclonedds#performance) discusses the product's performance and discusses what metrics describe it, very few tests seem to validate the given statistics or ensure that the performance does not regress.
+While there are no automated, public tests or results (more due Open Robotics lacking reliable ros2 CI infrastructure than to policy), there is evidence in PRs that performance does get taken into account (see, e.g., eclipse-cyclonedds/cyclonedds#558). Finally, `ddsperf` is used to check for performance regressions regularly and before releases. [ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
+
+ros2 [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ) exist but is not reliable infrastructure. We suggest moving performance testing onto dedicated hardware.
+
 One of the [example projects](https://github.com/eclipse-cyclonedds/cyclonedds/blob/15e68152c9d14105e87ab1afc7e5af9c9589f776/examples/throughput/readme.rst) can be used to measure the throughput of the product, but does not provide a mechanism for analyzing resource usage or latency.
 
 ### Linters and Static Analysis [4.v]
