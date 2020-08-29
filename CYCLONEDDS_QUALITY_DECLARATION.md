@@ -146,6 +146,7 @@ There are some tests throughout the `CycloneDDS` source tree which specifically 
 ### Coverage [4.iii]
 
 `CycloneDDS` has automated [Codecov](https://codecov.io) test coverage which can be seen [here](https://codecov.io/github/eclipse-cyclonedds/cyclonedds?branch=master).
+New changes are required to include tests coverage.
 
 
 ### Performance [4.iv]
