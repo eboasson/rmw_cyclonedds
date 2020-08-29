@@ -155,7 +155,7 @@ While there are no automated, public tests or results (more due Open Robotics la
 Finally, `ddsperf` is used to check for performance regressions regularly and before releases. 
 [ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
 
-ros2 [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ) exist but is not reliable infrastructure. We suggest moving performance testing onto dedicated hardware.
+ros2 [nightly CI performance tests](http://build.ros2.org/job/Fci__nightly-performance_ubuntu_focal_amd64/ ) exist but is not reliable infrastructure. We suggest Open Robotics move all performance testing to dedicated hardware.
 
 One of the [example projects](https://github.com/eclipse-cyclonedds/cyclonedds/blob/15e68152c9d14105e87ab1afc7e5af9c9589f776/examples/throughput/readme.rst) can be used to measure the throughput of the product, but does not provide a mechanism for analyzing resource usage or latency.
 
