@@ -5,8 +5,7 @@ This document is a declaration of software quality for the `CycloneDDS` external
 This quality declaration claims that `CycloneDDS` is in the **Quality Level 3** category.
 
 [The Eclipse Foundation](https://eclipse.org)'s `CycloneDDS` project meets a substantial number of the criteria stated for software quality.
-The developers have taken many steps to ensure that `CycloneDDS` is a software product which can be relied upon, however there is a significant lack of documentation regarding the interpretation of versions, features, and testing.
-Even minimal investments in these areas would contribute to the quality of the project, and could increase the level category for `CycloneDDS` in a subsequent review.
+The developers have taken many steps to ensure that `CycloneDDS` is a software product which can be relied upon.
 
 Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
