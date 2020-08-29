@@ -19,7 +19,7 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 * MINOR version when functionality is added in a backwards compatible manner. MINOR is source compatible (we strive to maintain binary compatibility as well).
 * PATCH version when backwards compatible bug fixes are made. PATCH is binary compatible.
 
-Major version 0 is also considered stable. `CycloneDDS` was already a stable code base when it was contributed to [The Eclipse Foundation](https://eclipse.org)
+Major version 0 is considered stable. `CycloneDDS` was already a stable code base when it was contributed to [The Eclipse Foundation](https://eclipse.org)
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
