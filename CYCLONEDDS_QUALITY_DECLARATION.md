@@ -152,7 +152,7 @@ New changes are required to include tests coverage.
 ### Performance [4.iv]
 
 While there are no automated, public tests or results (more due Open Robotics lacking reliable ros2 CI infrastructure than to policy), there is evidence in PRs that performance does get taken into account (see, e.g., eclipse-cyclonedds/cyclonedds#558). 
-Finally, `ddsperf` is used to check for performance regressions regularly and before releases.
+`ddsperf` is used to check for performance regressions regularly and before releases.
 PRs are tested for regressions using ddsperf before changes are accepted.
 [ddsperf](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/src/tools/ddsperf) is the tool to use for assessing `CycloneDDS` performance.
 
