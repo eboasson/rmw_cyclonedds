@@ -37,6 +37,7 @@ In the source repository, these header files reside with each of the modules tha
 ### API Stability Policy [1.iv]
 
 `CycloneDDS` provides API stability for PATCH release. `CycloneDDS` strives to provide API stability for MINOR release. `CycloneDDS` does guarantee API stability for MAJOR release.
+ROS 2 release is pinned to a Cyclone DDS release, e.g., 0.6.x or 0.7.x. The "x" here stands for patch releases and those are binary compatible. This does not preclude releasing 0.8.0 or 1.0.0.
 
 ### ABI Stability Policy [1.v]
 
@@ -68,7 +69,7 @@ All changes will occur through a pull request, check ROS 2 Developer Guide for a
 ### Contributor Origin [2.ii]
 
 This package uses DCO as its confirmation of contributor origin policy. 
-More information can be found in [CONTRIBUTING](https://www.eclipse.org/legal/DCO.php).
+More information can be found in [Eclipse Foundation's DCO policy](https://www.eclipse.org/legal/DCO.php).
 
 ### Peer Review Policy [2.iii]
 
