@@ -40,7 +40,7 @@ In the source repository, these header files reside with each of the modules tha
 
 ### ABI Stability Policy [1.v]
 
-`CycloneDDS` provides ABI stability for PATCH release. `CycloneDDS` strives to provide ABI stability for MINOR release. `CycloneDDS` not guarantee ABI stability for MAJOR release.
+`CycloneDDS` provides ABI stability for PATCH release. `CycloneDDS` strives to provide ABI stability for MINOR release. `CycloneDDS` does guarantee ABI stability for MAJOR release.
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
