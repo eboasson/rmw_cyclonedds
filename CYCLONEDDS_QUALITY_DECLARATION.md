@@ -36,7 +36,7 @@ In the source repository, these header files reside with each of the modules tha
 
 ### API Stability Policy [1.iv]
 
-`CycloneDDS` provides API stability for PATCH release. `CycloneDDS` strives to provide API stability for MINOR release. `CycloneDDS` not guarantee API stability for MAJOR release.
+`CycloneDDS` provides API stability for PATCH release. `CycloneDDS` strives to provide API stability for MINOR release. `CycloneDDS` does guarantee API stability for MAJOR release.
 
 ### ABI Stability Policy [1.v]
 
