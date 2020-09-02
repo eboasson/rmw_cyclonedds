@@ -199,15 +199,16 @@ If `CycloneDDS` is built without security enabled, the product has no apparent r
 
 `CycloneDDS` supports all of the tier 1 platforms as described in REP-2000, and tests each change against all of them.
 
-Currently nightly results can be seen here:
+`CycloneDDS` platform testing CI results are here: https://travis-ci.com/github/eclipse-cyclonedds 
+
+Open Robotics ROS 2 CI nightly results can be seen here:
 * [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/rmw_cyclonedds_cpp/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/rmw_cyclonedds_cpp/)
 
-Basically, the minimum versions are not known exactly. For Linux and macOS, ancient versions will still work. 
-For evidence, the fact that `CycloneDDS` builds and runs on [Solaris 2.6 on SPARCv8](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/ports/solaris2.6) (given pre-generated header files and IDL output) is a fair indication.
-
+Regarding minimum versions they are basically are not known exactly because `CycloneDDS` builds and runs on everything we have tested including ancient versions of Linux and macOS. 
+For evidence, the fact that `CycloneDDS` builds and runs on [Solaris 2.6 on SPARCv8](https://github.com/eclipse-cyclonedds/cyclonedds/tree/master/ports/solaris2.6) (given pre-generated header files and IDL output) is a fair indication of its broad support of platforms and old versions.
 CMake 3.7, Java 1.8 and Maven 3.5 are new enough.
 
 ## Security [7]
