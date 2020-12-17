@@ -2736,8 +2736,13 @@ static rmw_ret_t rmw_take_ser_int(
           sizeof(info.publication_handle));
       }
       size_t size = ddsi_serdata_size(d);
-      serialized_message->buffer_length = size;
+      if (rmw_serialized_message_resize(serialized_message, size) != RMW_RET_OK) {
+        ddsi_serdata_unref(d);
+        *taken = false;
+        return RMW_RET_ERROR;
+      }
       ddsi_serdata_to_ser(d, 0, size, serialized_message->buffer);
+      serialized_message->buffer_length = size;
       ddsi_serdata_unref(d);
       *taken = true;
       return RMW_RET_OK;
