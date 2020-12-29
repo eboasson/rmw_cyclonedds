@@ -1898,6 +1898,7 @@ static CddsPublisher * create_cdds_publisher(
     fqtopic_name.c_str(), type_support->typesupport_identifier,
     create_message_type_support(type_support->data, type_support->typesupport_identifier), false,
     rmw_cyclonedds_cpp::make_message_value_type(type_supports));
+  rcutils_reset_error();
   struct ddsi_sertype * stact;
   topic = create_topic(dds_ppant, fqtopic_name.c_str(), sertype, &stact);
   if (topic < 0) {
@@ -2274,6 +2275,7 @@ static CddsSubscription * create_cdds_subscription(
     fqtopic_name.c_str(), type_support->typesupport_identifier,
     create_message_type_support(type_support->data, type_support->typesupport_identifier), false,
     rmw_cyclonedds_cpp::make_message_value_type(type_supports));
+  rcutils_reset_error();
   topic = create_topic(dds_ppant, fqtopic_name.c_str(), sertype);
   if (topic < 0) {
     RMW_SET_ERROR_MSG("failed to create topic");
@@ -3854,6 +3856,7 @@ static rmw_ret_t rmw_init_cs(
   if (is_service) {
     std::tie(sub_msg_ts, pub_msg_ts) =
       rmw_cyclonedds_cpp::make_request_response_value_types(type_supports);
+    rcutils_reset_error();
 
     sub_type_support = create_request_type_support(
       type_support->data, type_support->typesupport_identifier);
@@ -3865,6 +3868,7 @@ static rmw_ret_t rmw_init_cs(
   } else {
     std::tie(pub_msg_ts, sub_msg_ts) =
       rmw_cyclonedds_cpp::make_request_response_value_types(type_supports);
+    rcutils_reset_error();
 
     pub_type_support = create_request_type_support(
       type_support->data, type_support->typesupport_identifier);
