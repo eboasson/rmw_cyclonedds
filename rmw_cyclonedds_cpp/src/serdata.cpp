@@ -216,7 +216,10 @@ struct ddsi_serdata * serdata_rmw_from_serialized_message(
   const void * raw, size_t size)
 {
   ddsrt_iovec_t iov;
-  iov.iov_len = size;
+  iov.iov_len = static_cast<ddsrt_iov_len_t>(size);
+  if (iov.iov_len != size) {
+    return nullptr;
+  }
   iov.iov_base = const_cast<void *>(raw);
   return ddsi_serdata_from_ser_iov(typecmn, SDK_DATA, 1, &iov, size);
 }
