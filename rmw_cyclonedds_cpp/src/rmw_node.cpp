@@ -1934,7 +1934,6 @@ fail_writer:
   dds_delete_qos(qos);
 fail_qos:
   dds_delete(topic);
-  ddsi_sertype_unref(stact);
 fail_topic:
   delete pub;
   return nullptr;
