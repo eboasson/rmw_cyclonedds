@@ -1771,7 +1771,7 @@ static bool dds_qos_to_rmw_qos(const dds_qos_t * dds_qos, rmw_qos_profile_t * qo
         break;
       case DDS_HISTORY_KEEP_ALL:
         qos_policies->history = RMW_QOS_POLICY_HISTORY_KEEP_ALL;
-        qos_policies->depth = (uint32_t) depth;
+        qos_policies->depth = 0;
         break;
       default:
         rmw_cyclonedds_cpp::unreachable();
