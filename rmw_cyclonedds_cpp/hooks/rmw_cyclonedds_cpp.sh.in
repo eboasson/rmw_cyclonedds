@@ -1,0 +1,1 @@
+export CYCLONEDDS_URI="${CYCLONEDDS_URI}${CYCLONEDDS_URI:+,}<Internal><GenerateKeyHash>true</GenerateKeyHash></Internal><Compatibility><IgnoreTypeInformation>1.15</IgnoreTypeInformation></Compatibility>"

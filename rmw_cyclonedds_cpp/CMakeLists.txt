@@ -44,6 +44,11 @@ if(CycloneDDS_FOUND)
     else()
       message(STATUS "Cyclone DDS is NOT compiled with support for shared memory")
     endif()
+  else()
+    ament_environment_hooks(
+      "${CMAKE_CURRENT_SOURCE_DIR}/hooks/rmw_cyclonedds_cpp.dsv.in"
+      "${CMAKE_CURRENT_SOURCE_DIR}/hooks/rmw_cyclonedds_cpp.sh.in"
+    )
   endif()
 else()
   message(WARNING "Could not find Eclipse Cyclone DDS - skipping '${PROJECT_NAME}'")
